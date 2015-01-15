@@ -892,6 +892,15 @@ static struct net_proto_family inet_family_ops = {
 
 /* Upon startup we insert all the elements in inetsw_array[] into
  * the linked list inetsw.
+ *
+ * IPPROTO_RAW
+ * Normally, you interact with layer 4 of OSI model (TCP or UDP).
+ * If you use IPPROTO_RAW, you will be able to interact directly with layer 3 (IP).
+ * This means you are more low level.
+ * For example, you can edit the header and payload of your IP packet
+ * (normally, the kernel will handle the header in other modes).
+ * Edit the payload means that you are free to put what you want directly in the IP payload.
+ * There won't be any TCP segment inside or whatever. You are free to do what you want inside!
  */
 static struct inet_protosw inetsw_array[] =
 {
